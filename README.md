@@ -19,10 +19,6 @@ require('lazy').setup({
 
 - char     -- string type default is  `│`,
 - exclude  -- table  type add exclude filetype in this table
-- hi_group -- table  type highlight groups to use
-
-highlight groups for indentation markers are created automatically by passing in a list
-of groups. Indentation colors will appear in the order they are passed in.
 
 ```lua
 config = function()
@@ -32,14 +28,23 @@ config = function()
             "erlang",
             "markdown",
         }
-        hi_group = {
-            'Comment',
-            'Function',
-            'Constant',
-            'MyIndentation'
-        }
     })
-    vim.cmd.highlight('MyIndentation guifg=#32a852')
+
+    -- For colored indent markers, you'll have to define exactly 6 colors to use
+    vim.cmd.highlight('IndentLine1 guifg=#123456')
+    vim.cmd.highlight('IndentLine2 guifg=#ABCDEF')
+    vim.cmd.highlight('IndentLine3 guifg=#1A2B3C')
+    vim.cmd.highlight('IndentLine4 guifg=#32a852')
+    vim.cmd.highlight('IndentLine5 guifg=#420690')
+    vim.cmd.highlight('IndentLine6 guifg=#999999')
+
+    -- if you want fewer than 6, you'll have to re-define the ones you want.
+    -- vim.cmd.highlight('IndentLine1 guifg=#123456')
+    -- vim.cmd.highlight('IndentLine2 guifg=#ABCDEF')
+    -- vim.cmd.highlight('IndentLine3 guifg=#1A2B3C')
+    -- vim.cmd.highlight('IndentLine1 guifg=#123456')
+    -- vim.cmd.highlight('IndentLine2 guifg=#ABCDEF')
+    -- vim.cmd.highlight('IndentLine3 guifg=#1A2B3C')
 end,
 ```
 
